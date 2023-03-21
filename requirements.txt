@@ -1,0 +1,11 @@
+flask
+flask-sqlalchemy
+ipython
+psycopg2-binary
+sqlalchemy
+python-dotenv
+WTForms
+Flask-WTF
+Flask-Bcrypt
+Flask-DebugToolbar
+email-validator
