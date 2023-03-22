@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ user.first_name }} {{ user.last_name }}</h1>
+<div>
+    Email: {{ user.email }}
+</div>
+<ul>
+    {% for note in user.notes %}
+    {{ form.hidden_tag() }}
+    <li>
+        <form method="POST" action="/notes/{{ note.id }}/delete">
+            {{ form.hidden_tag() }}
+            <button class="btn btn-danger" type="submit">Delete Note</button>
+        </form>  
+        <form method="POST" action="/notes/{{ note.id }}/update">
+            {{ form.hidden_tag() }}
+            <button class="btn btn-danger" type="submit">update Note</button>
+        </form>       
+        <div>{{ note.title }} </div>
+    </li>
+    {% endfor %}
+
+</ul>
+
+  
+<form method="POST" action="/users/{{ user.username }}/notes/add">
+    {{ form.hidden_tag() }}
+    <button class="btn btn-primary" type="submit">Add Note</button>
+</form>
+
+
+<form method="POST" action="/logout">
+    {{ form.hidden_tag() }}
+    <button class="btn btn-danger" type="submit">Logout</button>
+</form>
+
+<form method="POST" action="/users/{{ user.username }}/delete">
+    {{ form.hidden_tag() }}
+    <button class="btn btn-danger" type="submit">Delete User</button>
+</form>
+
+
+
+
+{% endblock %}
